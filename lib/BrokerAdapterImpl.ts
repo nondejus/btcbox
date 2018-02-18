@@ -88,7 +88,7 @@ export default class BrokerAdapterImpl implements BrokerAdapter {
 
   async getPositions(): Promise<Map<string, number>> {
     const response = await this.brokerApi.getBalance({ coin: 'btc' });
-    return new Map<string, number>([['btc', response.btc_balance], ['jpy', response.jpy_balance]]);
+    return new Map<string, number>([['BTC', response.btc_balance], ['JPY', response.jpy_balance]]);
   }
 
   async fetchQuotes(): Promise<Quote[]> {
