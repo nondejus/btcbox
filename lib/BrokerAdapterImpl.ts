@@ -79,7 +79,7 @@ export default class BrokerAdapterImpl implements BrokerAdapter {
   }
 
   async getBtcPosition(): Promise<number> {
-    const btc = (await this.getPositions()).get('btc');
+    const btc = (await this.getPositions()).get('BTC');
     if (btc === undefined) {
       throw new Error('Unable to find btc position.');
     }

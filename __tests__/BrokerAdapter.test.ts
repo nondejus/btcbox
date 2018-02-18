@@ -76,8 +76,8 @@ describe('BtcboxBrokerAdapter', () => {
   test('positions', async () => {
     const ba = new BrokerAdapter(brokerConfig);
     const pos = await ba.getPositions();
-    expect(pos.get('btc')).toBe(0);
-    expect(pos.get('jpy')).toBe(100);
+    expect(pos.get('BTC')).toBe(0);
+    expect(pos.get('JPY')).toBe(100);
   });
 
   test('btc positions', async () => {
