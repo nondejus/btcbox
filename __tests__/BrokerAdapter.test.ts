@@ -1,4 +1,3 @@
-import * as testData from './testData';
 import BrokerAdapter from '../lib/BrokerAdapterImpl';
 import { BrokerConfigType, CashMarginType, Broker, OrderSide, OrderType, TimeInForce, OrderStatus } from '../lib/types';
 import * as nock from 'nock';
