@@ -1,7 +1,8 @@
 import BrokerAdapter from '../lib/BrokerAdapterImpl';
-import { BrokerConfigType, CashMarginType, Broker, OrderSide, OrderType, TimeInForce, OrderStatus } from '../lib/types';
+import { BrokerConfigType, CashMarginType, Broker, OrderSide, OrderType, TimeInForce, OrderStatus, QuoteSide } from '../lib/types';
 import * as nock from 'nock';
 import { nocksetup } from './nocksetup';
+import * as _ from 'lodash';
 
 function createOrder(
   broker: Broker,
@@ -55,6 +56,13 @@ describe('BtcboxBrokerAdapter', () => {
       { broker: 'Btcbox', price: 1197707, side: 'Bid', volume: 0.005 },
       { broker: 'Btcbox', price: 1196306, side: 'Bid', volume: 0.4869 }
     ]);
+  });
+
+  test('fetchQuotes full', async () => {
+    const ba = new BrokerAdapter(brokerConfig);
+    const quotes = await ba.fetchQuotes();
+    const bestAsk = _(quotes).filter(q => q.side === QuoteSide.Ask).minBy(q => q.price);
+    expect(bestAsk.price).toBe(1107098);
   });
 
   test('send', async () => {

@@ -133,7 +133,7 @@ export default class BrokerAdapterImpl implements BrokerAdapter {
 
   private mapToQuote(depth: DepthResponse): Quote[] {
     const asks = _(depth.asks)
-      .take(100)
+      .takeRight(100)
       .map(q => {
         return { broker: this.broker, side: QuoteSide.Ask, price: q[0], volume: q[1] };
       })

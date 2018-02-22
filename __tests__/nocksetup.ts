@@ -5,6 +5,7 @@ import * as testData from './testData';
 export function nocksetup() {
   const api = nock('https://www.btcbox.co.jp');
   api.get('/api/v1/depth/').reply(200, testData.depth);
+  api.get('/api/v1/depth/').reply(200, testData.fullDepth);
   api.post('/api/v1/balance/').reply(200, testData.balance);
   api.post('/api/v1/balance/').reply(200, testData.balance);
   api.post('/api/v1/trade_cancel/').reply(200, testData.cancel);
